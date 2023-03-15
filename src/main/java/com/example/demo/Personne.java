@@ -16,6 +16,10 @@ public class Personne {
     @Column(name = "nomFamille")
     private String nom;
 
+
+    @ManyToOne
+    private Adresse adresse;
+
     public Personne() {
     }
     public Personne(String prenom, String nom) {
@@ -45,6 +49,14 @@ public class Personne {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
 
     @Override
