@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello Thymeleaf!</title>
+    <style>
+        h1 {
+         color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>template dynamique Hello</h1>
+
+<p th:text="'Hello, ' + ${name} + '!'" >texte par defaut</p>
+
+<p th:if="${personnes.size()} == 0">L'annuaire est vide</p>
+
+<ul>
+    <li th:each="p:${personnes}" th:text="${p.getPrenom()}"></li>
+</ul>
+
+</body>
+</html>
