@@ -1,7 +1,7 @@
-#mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mypassword';"
-#mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mypassword';"
-#mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'mypassword' WITH GRANT OPTION;"
-# SELECT user, plugin FROM mysql.user
+# il faut modifier le password du root dans MySQL
+# commandes Mysql déplacées de init vers command
+# car sinon le serveur MySQL n'a pas le temps de démarrer
+# avant l'execution des commandes
 
 
 # MySQL
@@ -9,9 +9,9 @@ image: gitpod/workspace-mysql
 
 tasks:
   - init:
-      sdk use java 17.0.5.fx-zulu
       ./mvnw clean install -U -DskipTests
     command:
+      sdk use java 17.0.5.fx-zulu
       mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mypassword';"
       mysql -u root -e "create database 2itech_demo";
       ./mvnw spring-boot:run
