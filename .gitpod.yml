@@ -4,7 +4,7 @@
 # SELECT user, plugin FROM mysql.user
 
 #./mvnw clean install -U -DskipTests
-#./mvnw spring-boot:run
+#    command: ./mvnw spring-boot:run
 
 # MySQL
 image: gitpod/workspace-mysql
@@ -15,7 +15,7 @@ tasks:
       mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mypassword';"
       mysql -u root -e "create database 2itech_demo";
 
-    command:
+
     name: Run webapp
 
 ports:
