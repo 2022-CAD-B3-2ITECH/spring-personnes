@@ -6,7 +6,7 @@ tasks:
       mysql -u root -e "create database 2itech_demo";
       # On utilise l'acces root sans password, si besoin d'affecter un password, tester la commande suivante:
       # mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root_password';"
-      
+
       ./mvnw clean install -U -DskipTests
     command: ./mvnw spring-boot:run
     name: Run webapp
