@@ -4,9 +4,16 @@
 # avant l'execution des commandes
 
 # mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mypassword';"
+#       mysql -u root -e "create database 2itech_demo";
 
-# gp ports await 3306 # Wait for port open
-#       until mysqladmin ping; do # Wait until MySQL is reachable
+# Wait for port open
+#gp ports await 3306
+
+# Wait until MySQL is reachable
+#until mysqladmin ping; do
+#sleep 1
+#done
+
 
 # MySQL
 image: gitpod/workspace-mysql
@@ -14,15 +21,9 @@ image: gitpod/workspace-mysql
 tasks:
   - init:
       sdk use java 17.0.5.fx-zulu
-      sh -c 'while ! nc -z localhost 3306; do sleep 1; done'
       ./mvnw clean install -U -DskipTests
     command:
       sdk use java 17.0.5.fx-zulu
-      gp ports await 3306
-      until mysqladmin ping; do
-      sleep 1
-      done
-      mysql -u root -e "create database 2itech_demo";
       ./mvnw spring-boot:run
     name: Run webapp
 
