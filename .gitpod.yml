@@ -9,6 +9,7 @@ image: gitpod/workspace-mysql
 
 tasks:
   - init:
+      sdk use java 17.0.5.fx-zulu
       ./mvnw clean install -U -DskipTests
     command:
       sdk use java 17.0.5.fx-zulu
