@@ -9,7 +9,8 @@ image: gitpod/workspace-mysql
 tasks:
   - init:
       sdk use java 17.0.5.fx-zulu
-      mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mypassword';"
+      mysql -u root -e "FLUSH PRIVILEGES;"
+      mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'mypassword';"
       mysql -u root -e "create database 2itech_demo";
       ./mvnw clean install -U -DskipTests
     command: ./mvnw spring-boot:run
