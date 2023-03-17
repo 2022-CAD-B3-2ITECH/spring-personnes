@@ -18,13 +18,10 @@ tasks:
       ./mvnw clean install -U -DskipTests
     command:
       sdk use java 17.0.5.fx-zulu
-      
       gp ports await 3306
-
       until mysqladmin ping; do
       sleep 1
       done
-      
       mysql -u root -e "create database 2itech_demo";
       ./mvnw spring-boot:run
     name: Run webapp
