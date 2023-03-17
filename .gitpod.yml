@@ -16,11 +16,9 @@ tasks:
     command:
       sdk use java 17.0.5.fx-zulu
       
-      # Wait for port open
-      gp ports await 3306
+      gp ports await 3306 # Wait for port open
 
-      # Wait until MySQL is reachable
-      until mysqladmin ping; do
+      until mysqladmin ping; do # Wait until MySQL is reachable
       sleep 1
       done
       
