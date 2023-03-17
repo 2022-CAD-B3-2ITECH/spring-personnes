@@ -1,0 +1,25 @@
+# MySQL
+image: gitpod/workspace-mysql
+
+tasks:
+  - init:
+      mysql -u root -e "create database 2itech_demo";
+      # On utilise l'acces root sans password, si besoin d'affecter un password, tester la commande suivante:
+      # mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root_password';"
+      
+      ./mvnw clean install -U -DskipTests
+    command: ./mvnw spring-boot:run
+    name: Run webapp
+
+ports:
+  #SpringBoot
+  - port: 8080
+    onOpen: open-preview
+  # MySQL
+  - port: 3306
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - pivotal.vscode-spring-boot
+    - vscjava.vscode-java-pack
