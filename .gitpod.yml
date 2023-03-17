@@ -11,6 +11,7 @@ image: gitpod/workspace-mysql
 tasks:
   - init:
       sdk use java 17.0.5.fx-zulu
+      mysql -u root -e "create database 2itech_demo";
       ./mvnw clean install -U -DskipTests
     command:
       sdk use java 17.0.5.fx-zulu
