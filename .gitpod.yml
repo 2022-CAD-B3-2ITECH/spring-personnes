@@ -3,6 +3,7 @@
 # car sinon le serveur MySQL n'a pas le temps de démarrer
 # avant l'execution des commandes
 
+# mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mypassword';"
 
 # MySQL
 image: gitpod/workspace-mysql
@@ -13,7 +14,6 @@ tasks:
       ./mvnw clean install -U -DskipTests
     command:
       sdk use java 17.0.5.fx-zulu
-      mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mypassword';"
       mysql -u root -e "create database 2itech_demo";
       ./mvnw spring-boot:run
     name: Run webapp
